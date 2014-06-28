@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
 <![endif]-->
 <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
-<script src="Bing.js"></script>
-<script src="bingkey.js"></script>
 <script type="text/javascript">
 
 var XhrObject = new XMLHttpRequest();
@@ -63,16 +61,16 @@ window.onload = function() {
    });
    tilesLayers["Stamen Toner"] = stamenTonerLayer;
 
-   // Create the Bing Maps Aerial tile layers
-   if (typeof bingKey != 'undefined') {
-      var bingLayer        = new L.BingLayer(bingKey, {type: 'Aerial'          });
-      var bingLabeledLayer = new L.BingLayer(bingKey, {type: 'AerialWithLabels'});
-      tilesLayers["Bing Aerial"          ] = bingLayer;
-      tilesLayers["Bing Aerial (labeled)"] = bingLabeledLayer;
-   };
+   // Create the Thunderforest Outdoors tile layer
+   var thunderforestOutdoorsURL = 'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png';
+   var thunderforestOutdoorsLayer = new L.TileLayer(thunderforestOutdoorsURL, {
+      attribution : 'Tiles &copy; <a href="http://www.thunderforest.com/outdoors/">Gravitystorm </a>',
+   });
+   tilesLayers["Thunderforest Outdoors"] = thunderforestOutdoorsLayer;
 
-   // Add the MapQuest tile layer to the map (default)
-   Map.addLayer(mapquestLayer);
+
+   // Add the Thunderforest Outdoors tile layer to the map (default)
+   Map.addLayer(thunderforestOutdoorsLayer);
 
    // Add layer control to map (base layers first)
    LayersControl = new L.Control.Layers(tilesLayers);
@@ -120,8 +118,8 @@ function processOutlines() {
          }
       });
 
-      // Bing is shown by default
-      if (feature.id.match(/^Bing/)) {
+// MapBox Satellite is shown by default
+      if (feature.id.match(/^MapBox Satellite/)) {
          Map.addLayer(outlinesLayer);
       }
 
