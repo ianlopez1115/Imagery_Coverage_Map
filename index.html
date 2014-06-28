@@ -69,8 +69,8 @@ window.onload = function() {
    tilesLayers["Thunderforest Outdoors"] = thunderforestOutdoorsLayer;
 
 
-   // Add the MapQuest tile layer to the map (default)
-   Map.addLayer(mapquestLayer);
+   // Add the Thunderforest Outdoors tile layer to the map (default)
+   Map.addLayer(thunderforestOutdoorsLayer);
 
    // Add layer control to map (base layers first)
    LayersControl = new L.Control.Layers(tilesLayers);
@@ -118,8 +118,8 @@ function processOutlines() {
          }
       });
 
-      // Thunderforest Outdoors is shown by default
-      if (feature.id.match(/^ThunderforestOutdoors/)) {
+// MapBox Satellite is shown by default
+      if (feature.id.match(/^MapBox Satellite/)) {
          Map.addLayer(outlinesLayer);
       }
 

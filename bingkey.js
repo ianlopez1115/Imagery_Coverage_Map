@@ -1,1 +1,0 @@
-var bingKey = 'Aj85Esu4rQSFcIvlpDGM8s4ElvYr1GSoUw7r8SJ2pvnA1mLiTSgzNgjE4ijqaLJn';
